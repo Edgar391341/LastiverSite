@@ -1,0 +1,73 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Warm cream / earth Armenian palette */
+  --background: oklch(0.96 0.025 80);          /* cream */
+  --foreground: oklch(0.22 0.04 50);           /* deep espresso */
+  --card: oklch(0.98 0.015 80);
+  --card-foreground: oklch(0.22 0.04 50);
+  --primary: oklch(0.45 0.12 40);              /* terracotta brown */
+  --primary-foreground: oklch(0.97 0.02 80);
+  --secondary: oklch(0.88 0.04 70);            /* sand */
+  --secondary-foreground: oklch(0.25 0.05 45);
+  --muted: oklch(0.92 0.025 75);
+  --muted-foreground: oklch(0.45 0.04 55);
+  --accent: oklch(0.62 0.16 45);               /* burnt orange */
+  --accent-foreground: oklch(0.98 0.02 80);
+  --border: oklch(0.82 0.04 70);
+  --ring: oklch(0.55 0.12 45);
+
+  --font-display: "Cormorant Garamond", "Noto Serif Armenian", Georgia, serif;
+  --font-body: "Inter", "Noto Sans Armenian", system-ui, sans-serif;
+
+  --gradient-warm: linear-gradient(135deg, oklch(0.55 0.14 45) 0%, oklch(0.38 0.10 35) 100%);
+  --shadow-warm: 0 30px 80px -30px oklch(0.30 0.10 40 / 0.45);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    background-image:
+      radial-gradient(at 10% 0%, oklch(0.92 0.05 70 / 0.6) 0px, transparent 50%),
+      radial-gradient(at 90% 100%, oklch(0.88 0.06 50 / 0.5) 0px, transparent 50%);
+  }
+  h1,h2,h3,h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .bg-warm { background: var(--gradient-warm); }
+  .shadow-warm { box-shadow: var(--shadow-warm); }
+}
